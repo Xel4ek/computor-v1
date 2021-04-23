@@ -2,7 +2,12 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": "./src",
+    "paths": {
+      "@components/*": ["app/components/*"],
+      "@services/*": ["app/services/*"],
+      "@vendor/*": ["app/vendor/*"]
+    },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
@@ -17,7 +22,7 @@
     "target": "es2015",
     "module": "es2020",
     "lib": [
-      "es2018",
+      "es2020",
       "dom"
     ]
   },

@@ -1,1 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~katex/dist/katex.css";
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: rgb(47, 30, 117);
+  background: linear-gradient(
+    138deg,
+    rgba(47, 30, 117, 1) 0%,
+    rgba(56, 16, 102, 0.9363095580028886) 53%,
+    rgba(55, 5, 98, 1) 100%
+  );
+  color: white;
+}
+@font-face {
+  font-family: "PlaylistScript";
+  src: url("/assets/fonts/PlaylistScript.otf");
+}

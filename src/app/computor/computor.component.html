@@ -1,0 +1,83 @@
+<div class="wrapper">
+  <div class="result">
+    <ng-container *ngIf="{ result: input$ | async } as data">
+      <ng-container *ngIf="welcome; else resultList">
+        <div class="welcome">
+          School 21 project. Completed by hwolf. Enter the equation at the
+          bottom of the page in the format:
+          <ng-katex
+            [equation]="'a\\cdot x^2+b\\cdot x + c =0'"
+            [options]="options"
+          ></ng-katex
+          >and it will be solved. This project is the first in a series that
+          aims to revive mathematics.
+        </div>
+      </ng-container>
+      <ng-template #resultList>
+        <div *ngIf="data.result?.type === 'error'" class="error">
+          {{ data.result?.value }}
+        </div>
+        <div class="solution" *ngIf="data.result?.type === 'solution'">
+          <div class="title">Input equation:</div>
+          <ng-katex [equation]="source" [options]="options"></ng-katex>
+          <div class="title">
+            Equation type:
+            <span class="calculation">{{ type() }} </span>
+            degree of the equation
+            <span class="calculation">{{ degree() }} </span>
+          </div>
+          <ng-container [ngSwitch]="type()">
+            <div *ngSwitchCase="'empty'">
+              <ng-katex [equation]="'c=0'" [options]="options"></ng-katex>
+            </div>
+            <div *ngSwitchCase="'linear'">
+              <ng-katex
+                [equation]="'b\\cdot x + c =0'"
+                [options]="options"
+              ></ng-katex>
+            </div>
+            <div *ngSwitchCase="'quadratic'">
+              <ng-katex
+                [equation]="'a\\cdot x^2 + b\\cdot x + c =0'"
+                [options]="options"
+              ></ng-katex>
+            </div>
+          </ng-container>
+          <div class="title">Simplified equation:</div>
+          <ng-katex [equation]="simplified()" [options]="options"></ng-katex>
+          <ng-container [ngSwitch]="type()">
+            <ng-container *ngSwitchCase="'empty'">
+              <div class="title">Equation solution:</div>
+
+              <ng-katex [equation]="empty()" [options]="options"></ng-katex>
+            </ng-container>
+            <ng-container *ngSwitchCase="'linear'">
+              <div class="title">Equation solution:</div>
+
+              <ng-katex [equation]="linear()" [options]="options"></ng-katex>
+            </ng-container>
+            <ng-container *ngSwitchCase="'quadratic'">
+              <div class="title">Discriminant</div>
+              <ng-katex
+                [equation]="discriminant()"
+                [options]="options"
+              ></ng-katex>
+              <div class="title">Equation solution:</div>
+              <ng-katex
+                *ngFor="let sol of solution()"
+                [equation]="sol"
+                [options]="options"
+              ></ng-katex>
+            </ng-container>
+          </ng-container>
+        </div>
+      </ng-template>
+    </ng-container>
+  </div>
+
+  <div class="input">
+    <div class="container stretch">
+      <input #input type="text" />
+    </div>
+  </div>
+</div>

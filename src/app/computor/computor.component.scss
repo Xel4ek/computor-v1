@@ -1,0 +1,70 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  .result {
+    flex: 1 1 auto;
+    font-size: 1.3rem;
+    .welcome {
+      line-height: 3rem;
+      font-style: italic;
+      max-width: 600px;
+      margin: auto;
+      padding-top: 3rem;
+    }
+    //text-align: center;
+    .error {
+      text-align: center;
+      font-style: italic;
+      color: #b01e1e;
+      font-size: 2rem;
+      padding-top: 4rem;
+    }
+    .solution {
+      .title {
+        padding: 0.3rem 0 0 20%;
+      }
+      .calculation {
+        color: green;
+        font-style: italic;
+      }
+    }
+  }
+  .input {
+    background: rgb(16, 10, 41);
+    background: linear-gradient(
+      138deg,
+      rgba(16, 10, 41, 1) 0%,
+      rgba(23, 7, 41, 0.9363095580028886) 53%,
+      rgba(55, 5, 98, 1) 100%
+    );
+    .stretch {
+      display: flex;
+      position: relative;
+      &::after {
+        position: absolute;
+        content: "@hwolf";
+        font-style: italic;
+        color: white;
+        opacity: 0.6;
+        font-size: 0.7rem;
+        right: 1ch;
+        top: 0;
+      }
+      input {
+        background-color: transparent;
+        color: white;
+        font-style: italic;
+        font-size: 2rem;
+        text-align: center;
+        flex: 1 1 auto;
+        padding: 0.4rem;
+        border: none;
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+  }
+  height: calc(100% - 64px);
+}
