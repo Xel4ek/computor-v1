@@ -125,6 +125,10 @@
               "devServerTarget": "computor-v1:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
     }
