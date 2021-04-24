@@ -96,7 +96,7 @@ export class ComputorComponent implements AfterViewInit, OnDestroy {
       switchMap((input) =>
         of(input).pipe(
           map((data): Token[] => {
-            this.source = data.repeat(1).replace('*', '\\cdot');
+            this.source = data.repeat(1).replace(/\*/g, '\\cdot ');
             return this.tokenizerService.tokenize(data);
           }),
           map((tokens) => this.lexerService.validate(tokens)),
